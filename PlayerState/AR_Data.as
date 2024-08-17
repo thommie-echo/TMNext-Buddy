@@ -248,10 +248,8 @@ namespace PlayerState
 				PlayerState = EPlayerState::EPlayerState_EndRace; // Manually adjust to end race to get the event later in this function
 			}
 
-			int LapCPs = dMLData.NumCPs - dPlayerInfo.CurrentLapNumber * dMapInfo.NumberOfCheckpoints;
-
 			// Finish also counts as NumCPs but have been excluded from NumberOfCheckpoints
-			if(LapCPs  > dMapInfo.NumberOfCheckpoints && previous.PlayerState != EPlayerState::EPlayerState_Finished && !IsSpectator && PlayerState == EPlayerState_Driving)
+			if(dPlayerInfo.NumberOfCheckpointsPassed  > dMapInfo.NumberOfCheckpoints && previous.PlayerState != EPlayerState::EPlayerState_Finished && !IsSpectator && PlayerState == EPlayerState_Driving)
 			{
 				if(dMapInfo.IsFinish(dPlayerInfo.LatestCheckpointLandmarkIndex))
 				{
